@@ -1,0 +1,23 @@
+Core Text Hyperlink View
+========================
+
+- Uses AutoHyperlinks code from Adium [http://code.google.com/p/maccode/wiki/AutoHyperlinks](http://code.google.com/p/maccode/wiki/AutoHyperlinks)
+
+Project includes an example of how to use the core text view. It's pretty simple - create the view with a 0 height frame, set the attributes, set its text, and then ask it for it's size so that the height is just correct. It will calculate based on the constraining width, and any padding that you set.
+
+There is also a Twitter specific subclass that enables @usernames and #hashtags to be linkified.
+
+**Settable Attributes:**
+
+- textAlignment
+- textColor
+- linkColor
+- highlightedLinkColor
+- fontName
+- fontSize
+- paddingTop
+- paddingLeft
+- backgroundImage
+- bgImageTopStretchCap
+- bgImageLeftStretchCap
+
