@@ -15,7 +15,7 @@
 {
 	[super detectLinks];
 	
-	NSMutableArray *links = [_links mutableCopy];
+	NSMutableArray *tempLinks = [_links mutableCopy];
 	
 	NSArray *expressions = [[[NSArray alloc] initWithObjects:@"(@[a-zA-Z0-9_]+)", // screen names
 															 @"(#[a-zA-Z0-9_-]+)", // hash tags
@@ -44,7 +44,7 @@
 																	 withValidationStatus:AH_URL_VALID
 																			 parentString:[self text]
 																				 andRange:[match range]] autorelease];
-				[links addObject:hyperlink];
+				[tempLinks addObject:hyperlink];
 			}
 			else if ([matchedString hasPrefix:@"#"]) // hash tag
 			{
@@ -54,13 +54,14 @@
 																	 withValidationStatus:AH_URL_VALID
 																			 parentString:[self text]
 																				 andRange:[match range]] autorelease];
-				[links addObject:hyperlink];
+				[tempLinks addObject:hyperlink];
 			}
 		}
 	}
 	
 	[_links release];
-	_links = [links copy];
+	_links = [tempLinks copy];
+	[tempLinks release], tempLinks = nil;
 }
 
 @end

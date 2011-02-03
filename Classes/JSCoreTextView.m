@@ -122,6 +122,13 @@ float const yAdjustmentFactor = 1.3;
 	if (_framesetter)
 	{
 		CFRelease(_framesetter);
+		_framesetter = NULL;
+	}
+	
+	if (_frame)
+	{
+		CFRelease(_frame);
+		_frame = NULL;
 	}
 	
 	[super dealloc];
