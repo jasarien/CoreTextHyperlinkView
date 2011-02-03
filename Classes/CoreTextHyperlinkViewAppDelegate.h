@@ -11,12 +11,13 @@
 @class CoreTextHyperlinkViewViewController;
 
 @interface CoreTextHyperlinkViewAppDelegate : NSObject <UIApplicationDelegate> {
+
+	UINavigationController *navController;
     UIWindow *window;
-    CoreTextHyperlinkViewViewController *viewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet CoreTextHyperlinkViewViewController *viewController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navController;
 
 @end
 

@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "JSCoreTextView.h"
 
+@class JSTwitterCoreTextView;
+
 @interface CoreTextHyperlinkViewViewController : UIViewController <JSCoreTextViewDelegate> {
 
+	JSTwitterCoreTextView *_textView;
+	UIScrollView *_scrollView;
+	
 }
 
 @end

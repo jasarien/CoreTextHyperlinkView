@@ -12,7 +12,7 @@
 @implementation CoreTextHyperlinkViewAppDelegate
 
 @synthesize window;
-@synthesize viewController;
+@synthesize navController;
 
 
 #pragma mark -
@@ -23,7 +23,7 @@
     // Override point for customization after application launch.
 
     // Add the view controller's view to the window and display.
-    [self.window addSubview:viewController.view];
+    [self.window addSubview:navController.view];
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -78,9 +78,10 @@
 }
 
 
-- (void)dealloc {
-    [viewController release];
-    [window release];
+- (void)dealloc
+{
+	self.window = nil;
+	self.navController = nil;
     [super dealloc];
 }
 
