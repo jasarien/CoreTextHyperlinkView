@@ -3,3 +3,5 @@
 *.perspectivev3
 build/
 .svn/
+*.xcworkspace
+xcuserdata/

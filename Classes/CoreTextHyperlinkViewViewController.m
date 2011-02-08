@@ -43,6 +43,7 @@
 	CGFloat paddingLeft = 20.0;
 	
 	_textView = [[[JSTwitterCoreTextView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)] autorelease];
+	[_textView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
 	[_textView setDelegate:self];
 	[_textView setText:text];
 	[_textView setFontName:font];
@@ -62,7 +63,8 @@
 	[_textView setFrame:textFrame];
 	
 	
-	_scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)] autorelease];
+	_scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)] autorelease];
+	[_scrollView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
 	[_scrollView setContentSize:_textView.frame.size];
 	[_scrollView addSubview:_textView];
 	
@@ -73,6 +75,33 @@
 	[segControl addTarget:self
 				   action:@selector(segmentedControlValueChanged:)
 		 forControlEvents:UIControlEventValueChanged];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	CGFloat height = [JSCoreTextView measureFrameHeightForText:_textView.text 
+													  fontName:_textView.fontName
+													  fontSize:_textView.fontSize 
+											constrainedToWidth:_textView.frame.size.width - _textView.paddingLeft * 2
+													paddingTop:_textView.paddingTop 
+												   paddingLeft:_textView.paddingLeft];
+	CGRect textFrame = [_textView frame];
+	textFrame.size.height = height;
+	[_textView setFrame:textFrame];
+	
+	[_scrollView setContentSize:_textView.frame.size];
+	
+	[_textView setNeedsDisplay];
 }
 
 - (void)textView:(JSCoreTextView *)textView linkTapped:(AHMarkedHyperlink *)link
