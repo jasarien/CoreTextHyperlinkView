@@ -32,6 +32,8 @@
 	
 	NSArray *_links;
 	AHMarkedHyperlink *_touchedLink;
+	AHMarkedHyperlink *_linkToCopy;
+	CGPoint _linkLocation;
 	
 	UIColor *_textColor;
 	UIColor *_linkColor;

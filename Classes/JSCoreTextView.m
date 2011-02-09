@@ -101,6 +101,14 @@ float const yAdjustmentFactor = 1.3;
 		self.linkColor = [UIColor blueColor];
 		self.highlightedLinkColor = [UIColor blueColor];
 		self.highlightColor = [UIColor grayColor];
+		
+		UILongPressGestureRecognizer *longPressHandler = [[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)] autorelease];
+		[self addGestureRecognizer:longPressHandler];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(handleMenuControllerDidHideMenuNotification:)
+													 name:UIMenuControllerDidHideMenuNotification
+												   object:nil];
 	}
 	
 	return self;
@@ -259,8 +267,8 @@ float const yAdjustmentFactor = 1.3;
 {
 	UITouch *touch = [touches anyObject];
 	CGPoint location = [touch locationInView:self];
-//	location.y += JSCoreTextView_y_adjustment;
-//	location.y += self.paddingTop;
+	_linkLocation = location;
+	
 	location.y += (self.fontSize / yAdjustmentFactor);
 	location.x -= self.paddingLeft;
 	
@@ -366,6 +374,79 @@ float const yAdjustmentFactor = 1.3;
 	
 	_touchedLink = nil;
 	[self setNeedsDisplay];
+}
+
+- (void)handleLongPress:(UIGestureRecognizer *)recogniser
+{
+	[self becomeFirstResponder];
+	
+	if ([recogniser state] == UIGestureRecognizerStateBegan)
+	{
+		if (_touchedLink)
+		{
+			_linkToCopy = _touchedLink;
+			
+			UIMenuItem *copyLink = [[[UIMenuItem alloc] initWithTitle:@"Copy Link"
+															   action:@selector(copyLink:)] autorelease];
+			[[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObject:copyLink]];
+			[[UIMenuController sharedMenuController] setTargetRect:CGRectMake(_linkLocation.x, _linkLocation.y - 10, 1, 1) inView:self];
+		}
+		else
+		{
+			[[UIMenuController sharedMenuController] setTargetRect:self.frame inView:self.superview];
+		}
+		[[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
+	}
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+	return YES;
+}
+
+- (BOOL)canResignFirstResponder
+{
+	return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+	if (action == @selector(copy:) && !_touchedLink)
+	{
+		return YES;
+	}
+	else if (action == @selector(copyLink:) && _linkToCopy)
+	{
+		return YES;
+	}
+	
+	return NO;
+}
+
+- (void)copy:(id)sender
+{
+	if ([[self text] length])
+	{
+		[[UIPasteboard generalPasteboard] setString:[self text]];
+	}
+	
+	[[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+}
+
+- (void)copyLink:(id)sender
+{
+	if (_linkToCopy)
+	{
+		[[UIPasteboard generalPasteboard] setString:[[_linkToCopy URL] absoluteString]];
+	}
+	
+	_linkToCopy = nil;
+	[[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+}
+
+- (void)handleMenuControllerDidHideMenuNotification:(NSNotification *)note
+{
+	_linkToCopy = nil;
 }
 
 #pragma mark -
