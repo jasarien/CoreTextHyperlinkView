@@ -1,9 +1,9 @@
 //
 //  JSCoreTextView.h
-//  CoreTextCells
+//  CoreTextHyperlinkView
 //
-//  Created by James Addyman on 16/12/2010.
-//  Copyright 2010 JamSoft. All rights reserved.
+//  Created by James Addyman on 16/12/2011.
+//  Copyright 2011 JamSoft. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

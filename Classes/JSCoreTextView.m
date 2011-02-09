@@ -1,9 +1,9 @@
 //
 //  JSCoreTextView.m
-//  CoreTextCells
+//  CoreTextHyperlinkView
 //
-//  Created by James Addyman on 16/12/2010.
-//  Copyright 2010 JamSoft. All rights reserved.
+//  Created by James Addyman on 16/12/2011.
+//  Copyright 2011 JamSoft. All rights reserved.
 //
 
 #import "JSCoreTextView.h"
@@ -282,7 +282,6 @@ float const yAdjustmentFactor = 1.3;
 	for (int i= 0; i < CFArrayGetCount(lines); i++)
 	{
 		CGPoint origin = origins[i];
-//		NSLog(@"Line %d origin: %@", i, NSStringFromCGPoint(origin));
 		CGPathRef path = CTFrameGetPath(_frame);
 		CGRect rect = CGPathGetBoundingBox(path);
 		
