@@ -450,6 +450,11 @@ float const yAdjustmentFactor = 1.3;
 #pragma mark -
 #pragma mark Drawing / Layout
 
+- (void)layoutSubviews
+{
+	[self setNeedsDisplay];
+}
+
 - (void)createFramesetter
 {
 	if (_framesetter)
