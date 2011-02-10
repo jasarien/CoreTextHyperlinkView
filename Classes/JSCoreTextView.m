@@ -326,7 +326,6 @@ float const yAdjustmentFactor = 1.3;
 	for (int i= 0; i < CFArrayGetCount(lines); i++)
 	{
 		CGPoint origin = origins[i];
-		//		NSLog(@"Line %d origin: %@", i, NSStringFromCGPoint(origin));
 		CGPathRef path = CTFrameGetPath(_frame);
 		CGRect rect = CGPathGetBoundingBox(path);
 		
@@ -491,12 +490,7 @@ float const yAdjustmentFactor = 1.3;
 			CFAttributedStringSetAttribute(maString, range, kCTForegroundColorAttributeName, [self.highlightedLinkColor CGColor]);
 		}
 	}
-	
-//	if (self.selected)
-//	{
-//		CFAttributedStringSetAttribute(maString, CFRangeMake(0, length), kCTForegroundColorAttributeName, [[UIColor whiteColor] CGColor]);
-//	}
-	
+		
 	CFAttributedStringEndEditing(maString);
 	
 	_framesetter = CTFramesetterCreateWithAttributedString(maString);
@@ -510,6 +504,7 @@ float const yAdjustmentFactor = 1.3;
 	[self createFramesetter];
 	
 	CGRect frameRect = bounds;
+	
 	CGMutablePathRef path = NULL;
 	
 	frameRect.size.height = FLT_MAX;
@@ -558,9 +553,6 @@ float const yAdjustmentFactor = 1.3;
 				if ((((runRange.location >= [_touchedLink range].location) && (runRange.location < [_touchedLink range].location + [_touchedLink range].length)) &&
 					 ((runRange.location + runRange.length) <= ([_touchedLink range].location + [_touchedLink range].length))))
 				{
-					
-					//NSLog(@"Link substring: : %@", [self.text substringWithRange:NSMakeRange(runRange.location, runRange.length)]);
-					
 					//runRange is within the link range
 					
 					CGRect runBounds = CGRectZero;
@@ -573,7 +565,6 @@ float const yAdjustmentFactor = 1.3;
 					
 					// get the origin of the glyph run (this is relative to the origin of the line)
 					const CGPoint *positions = CTRunGetPositionsPtr(run);
-					//NSLog(@"positions: %@", NSStringFromCGPoint(positions[0]));
 					
 					// get the origins of the lines
 					CGPoint lineOrigins[CFArrayGetCount(lines)];
@@ -581,7 +572,6 @@ float const yAdjustmentFactor = 1.3;
 					
 					CGRect rect = CGPathGetBoundingBox(path);
 					CGPoint origin = lineOrigins[i];
-					//NSLog(@"Line Origin: %@", NSStringFromCGPoint(origin));
 					
 					// set the x position for the glyph run
 					runBounds.origin.x += positions[0].x;
@@ -594,17 +584,9 @@ float const yAdjustmentFactor = 1.3;
 					
 					// flip the y coordinate from core text coordinate system to work in the native coordinate system (this always confuses the hell out of me)
 					CGFloat y = rect.origin.y + rect.size.height - origin.y;
-					//runBounds.origin.y += y - JSCoreTextView_y_adjustment;
-					//runBounds.origin.y += y - self.paddingTop;
 					runBounds.origin.y += y - (self.fontSize / yAdjustmentFactor);
 					
-					// adjust the rect to be slightly bigger than the text
-
-//					runBounds.origin.x -= runBounds.size.width * 0.03;
-//					runBounds.size.width += runBounds.size.width * 0.06;      // this works but gives rects that are too wide for longer lines and too much variation
-//					runBounds.origin.y -= runBounds.size.height * 0.2;
-//					runBounds.size.height += runBounds.size.height * 0.3;
-					
+					// adjust the rect to be slightly bigger than the text					
 					runBounds.origin.x -= self.fontSize / 4;
 					runBounds.size.width += self.fontSize / 2;
 					runBounds.origin.y -= self.fontSize / 8;                // this is more favourable
