@@ -9,6 +9,7 @@
 #import "CoreTextHyperlinkViewViewController.h"
 #import "JSTwitterCoreTextView.h"
 #import "AHMarkedHyperlink.h"
+#import "JSWebViewController.h"
 
 @implementation CoreTextHyperlinkViewViewController
 
@@ -42,7 +43,7 @@
 	CGFloat paddingTop = 10.0;
 	CGFloat paddingLeft = 10.0;
 	
-	_textView = [[[JSTwitterCoreTextView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)] autorelease];
+	_textView = [[[JSTwitterCoreTextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0)] autorelease];
 	[_textView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
 	[_textView setDelegate:self];
 	[_textView setText:text];
@@ -63,7 +64,7 @@
 	[_textView setFrame:textFrame];
 	
 	
-	_scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)] autorelease];
+	_scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
 	[_scrollView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
 	[_scrollView setContentSize:_textView.frame.size];
 	[_scrollView addSubview:_textView];
@@ -106,7 +107,13 @@
 
 - (void)textView:(JSCoreTextView *)textView linkTapped:(AHMarkedHyperlink *)link
 {
-	NSLog(@"Link: %@", [link URL]);
+	JSWebViewController *webViewController = [[[JSWebViewController alloc] initWithNibName:@"JSWebViewController" bundle:nil] autorelease];
+	[webViewController setUrl:[link URL]];
+	UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:webViewController] autorelease];
+	[navController setModalPresentationStyle:UIModalPresentationFullScreen];
+	[navController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+	
+	[self presentModalViewController:navController animated:YES];
 }
 
 - (void)segmentedControlValueChanged:(id)sender
@@ -151,6 +158,7 @@
 
 - (void)viewDidUnload
 {
+	
 }
 
 

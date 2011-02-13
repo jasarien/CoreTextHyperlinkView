@@ -13,6 +13,8 @@
 		1A7A8B4812C4C9C6003283E5 /* AHLinkLexer.l in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A8B4312C4C9C6003283E5 /* AHLinkLexer.l */; };
 		1A7A8B4912C4C9C6003283E5 /* AHMarkedHyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A8B4512C4C9C6003283E5 /* AHMarkedHyperlink.m */; };
 		1A7A8B5712C4CA10003283E5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7A8B5612C4CA10003283E5 /* CoreText.framework */; };
+		1ACBF8161307576E0050711A /* JSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBF8141307576E0050711A /* JSWebViewController.m */; };
+		1ACBF8171307576E0050711A /* JSWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ACBF8151307576E0050711A /* JSWebViewController.xib */; };
 		1D3623260D0F684500981E51 /* CoreTextHyperlinkViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* CoreTextHyperlinkViewAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -36,6 +38,9 @@
 		1A7A8B4512C4C9C6003283E5 /* AHMarkedHyperlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMarkedHyperlink.m; sourceTree = "<group>"; };
 		1A7A8B4612C4C9C6003283E5 /* AutoHyperlinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoHyperlinks.h; sourceTree = "<group>"; };
 		1A7A8B5612C4CA10003283E5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		1ACBF8131307576E0050711A /* JSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWebViewController.h; sourceTree = "<group>"; };
+		1ACBF8141307576E0050711A /* JSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSWebViewController.m; sourceTree = "<group>"; };
+		1ACBF8151307576E0050711A /* JSWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JSWebViewController.xib; path = Classes/JSWebViewController.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* CoreTextHyperlinkViewAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextHyperlinkViewAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* CoreTextHyperlinkViewAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextHyperlinkViewAppDelegate.m; sourceTree = "<group>"; };
@@ -78,6 +83,8 @@
 				1A7A8B3412C4C945003283E5 /* JSCoreTextView.m */,
 				1A62C43E12D5E6EA00003E1E /* JSTwitterCoreTextView.h */,
 				1A62C43F12D5E6EA00003E1E /* JSTwitterCoreTextView.m */,
+				1ACBF8131307576E0050711A /* JSWebViewController.h */,
+				1ACBF8141307576E0050711A /* JSWebViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1ACBF8151307576E0050711A /* JSWebViewController.xib */,
 				2899E5210DE3E06400AC0155 /* CoreTextHyperlinkViewViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CoreTextHyperlinkView-Info.plist */,
@@ -197,6 +205,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* CoreTextHyperlinkViewViewController.xib in Resources */,
+				1ACBF8171307576E0050711A /* JSWebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +224,7 @@
 				1A7A8B4812C4C9C6003283E5 /* AHLinkLexer.l in Sources */,
 				1A7A8B4912C4C9C6003283E5 /* AHMarkedHyperlink.m in Sources */,
 				1A62C44012D5E6EA00003E1E /* JSTwitterCoreTextView.m in Sources */,
+				1ACBF8161307576E0050711A /* JSWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +241,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CoreTextHyperlinkView_Prefix.pch;
 				INFOPLIST_FILE = "CoreTextHyperlinkView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = CoreTextHyperlinkView;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -243,7 +255,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CoreTextHyperlinkView_Prefix.pch;
 				INFOPLIST_FILE = "CoreTextHyperlinkView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = CoreTextHyperlinkView;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
