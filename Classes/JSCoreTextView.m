@@ -74,7 +74,9 @@ float const yAdjustmentFactor = 1.3;
 	CFRelease(maString);
 	CFRelease(framesetter);
 	
-	return size.height + paddingTop * 2;
+	int height = size.height + paddingTop * 2;
+	
+	return (CGFloat)height;
 }
 
 #pragma mark -
