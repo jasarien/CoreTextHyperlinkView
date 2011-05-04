@@ -74,7 +74,10 @@ float const yAdjustmentFactor = 1.3;
 	CFRelease(maString);
 	CFRelease(framesetter);
 	
-	return size.height + paddingTop * 2;
+	int returnVal = size.height + (paddingTop * 2) + 1; // the + 1 might be a bit hacky, but it solves an issue where suggestFrameSizeWithContstrains may return a height that *only-just* doesn't
+														// fit the given text and it's attributes... It doesn't appear to have any adverse effects in every other situation.
+	
+	return (CGFloat)returnVal;
 }
 
 #pragma mark -

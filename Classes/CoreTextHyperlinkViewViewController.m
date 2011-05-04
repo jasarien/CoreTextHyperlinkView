@@ -56,7 +56,7 @@
 	CGFloat height = [JSCoreTextView measureFrameHeightForText:text 
 														fontName:font 
 														fontSize:size 
-											  constrainedToWidth:_textView.frame.size.width - paddingLeft * 2
+											  constrainedToWidth:_textView.frame.size.width - (paddingLeft * 2)
 													  paddingTop:paddingTop 
 													 paddingLeft:paddingLeft];
 	CGRect textFrame = [_textView frame];
