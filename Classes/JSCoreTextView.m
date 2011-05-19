@@ -18,6 +18,7 @@ float const yAdjustmentFactor = 1.3;
 - (void)createFramesetter;
 - (void)drawInContext:(CGContextRef)ctx bounds:(CGRect)bounds;
 - (CGPathRef)newPathForRoundedRect:(CGRect)rect radius:(CGFloat)radius;
+- (void)commonInit;
 
 @end
 
@@ -87,34 +88,38 @@ float const yAdjustmentFactor = 1.3;
 {
 	if ((self = [super initWithFrame:frame]))
 	{
-		_textAlignment = kCTLeftTextAlignment;
-		_links = nil;
-		
-		self.backgroundImage = nil;
-		self.bgImageTopStretchCap = 0.0;
-		self.bgImageLeftStretchCap = 0.0;
-		
-		self.fontName = @"Helvetica";
-		self.fontSize = 17.0;
-		
-		self.paddingTop = 0;
-		self.paddingLeft = 0;
-		
-		self.textColor = [UIColor blackColor];
-		self.linkColor = [UIColor blueColor];
-		self.highlightedLinkColor = [UIColor blueColor];
-		self.highlightColor = [UIColor grayColor];
-		
-		UILongPressGestureRecognizer *longPressHandler = [[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)] autorelease];
-		[self addGestureRecognizer:longPressHandler];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self
-												 selector:@selector(handleMenuControllerDidHideMenuNotification:)
-													 name:UIMenuControllerDidHideMenuNotification
-												   object:nil];
-	}
-	
-	return self;
+        [self commonInit];
+    }
+    
+    return self;
+}
+
+- (void)commonInit {
+    _textAlignment = kCTLeftTextAlignment;
+    _links = nil;
+    
+    self.backgroundImage = nil;
+    self.bgImageTopStretchCap = 0.0;
+    self.bgImageLeftStretchCap = 0.0;
+    
+    self.fontName = @"Helvetica";
+    self.fontSize = 17.0;
+    
+    self.paddingTop = 0;
+    self.paddingLeft = 0;
+    
+    self.textColor = [UIColor blackColor];
+    self.linkColor = [UIColor blueColor];
+    self.highlightedLinkColor = [UIColor blueColor];
+    self.highlightColor = [UIColor grayColor];
+    
+    UILongPressGestureRecognizer *longPressHandler = [[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)] autorelease];
+    [self addGestureRecognizer:longPressHandler];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleMenuControllerDidHideMenuNotification:)
+                                                 name:UIMenuControllerDidHideMenuNotification
+                                               object:nil];
 }
 
 - (void)dealloc
