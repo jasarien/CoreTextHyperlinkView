@@ -24,7 +24,7 @@ There is also a Twitter specific subclass that enables @usernames and #hashtags 
 Licenses
 ========
 
-CoreTextHyperlinkView
+CoreTextHyperlinkView (Simplified BSD License)
 ---------------------
 
 Copyright 2011 James Addyman (JamSoft). All rights reserved.
@@ -53,7 +53,7 @@ The views and conclusions contained in the software and documentation are those 
 authors and should not be interpreted as representing official policies, either expressed
 or implied, of James Addyman (JamSoft).
 
-AutoHyperlinks
+AutoHyperlinks (Modified BSD License)
 --------------
 
 
