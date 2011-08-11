@@ -42,6 +42,11 @@
 {
 	[super detectLinks];
 	
+	if (![[self text] length])
+	{
+		return;
+	}
+	
 	NSMutableArray *tempLinks = [_links mutableCopy];
 	
 	NSArray *expressions = [[[NSArray alloc] initWithObjects:@"(@[a-zA-Z0-9_]+)", // screen names
