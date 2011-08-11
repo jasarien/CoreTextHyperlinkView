@@ -21,6 +21,12 @@ There is also a Twitter specific subclass that enables @usernames and #hashtags 
 - bgImageTopStretchCap
 - bgImageLeftStretchCap
 
+To use CoreTextHyperlinkView in your apps:
+
+- Copy The contents of the AutoHyperlinks folder, and the files JSCoreTextView.h & .m and, if you want Twitter username and hashtag support, copy JSTwitterCoreTextView.h & .m too.
+- Link against the CoreText framework.
+- 
+
 Licenses
 ========
 

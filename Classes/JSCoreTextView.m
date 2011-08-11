@@ -151,6 +151,8 @@ float const yAdjustmentFactor = 1.3;
 
 - (void)dealloc
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
 	self.text = nil;
 	
 	self.textColor = nil;
@@ -660,11 +662,12 @@ float const yAdjustmentFactor = 1.3;
 
 - (void)drawRect:(CGRect)rect
 {
+	[super drawRect:rect];
+	
 	CGRect bounds = self.bounds;
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
 	
-	CGContextSetRGBFillColor(ctx, 1.0, 1.0, 1.0, 1.0);
-	CGContextFillRect(ctx, bounds);
+	CGContextFlush(ctx);
 	
 	if (self.backgroundImage)
 	{
