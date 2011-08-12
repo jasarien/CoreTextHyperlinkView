@@ -617,11 +617,7 @@ float const yAdjustmentFactor = 1.3;
 					
 					// set the x position for the glyph run
 					runBounds.origin.x += positions[0].x;
-					if (_textAlignment == kCTRightTextAlignment)
-					{
-						runBounds.origin.x += origin.x;
-					}
-					
+					runBounds.origin.x += origin.x;
 					runBounds.origin.x += self.paddingLeft;
 					
 					// flip the y coordinate from core text coordinate system to work in the native coordinate system (this always confuses the hell out of me)
