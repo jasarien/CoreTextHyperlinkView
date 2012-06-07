@@ -76,6 +76,8 @@
 	UIImage *_backgroundImage;
 	CGFloat _bgImageTopStretchCap;
 	CGFloat _bgImageLeftStretchCap;
+	
+	BOOL _underlined;
 }
 
 @property (nonatomic, assign) id <JSCoreTextViewDelegate> delegate;
@@ -98,6 +100,8 @@
 @property (nonatomic, retain) UIImage *backgroundImage;
 @property (nonatomic, assign) CGFloat bgImageTopStretchCap;
 @property (nonatomic, assign) CGFloat bgImageLeftStretchCap;
+
+@property (nonatomic) BOOL underlined;
 
 + (CGFloat)measureFrameHeightForText:(NSString *)text 
 							fontName:(NSString *)fontName 

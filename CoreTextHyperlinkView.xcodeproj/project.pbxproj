@@ -23,6 +23,7 @@
 		2899E5220DE3E06400AC0155 /* CoreTextHyperlinkViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* CoreTextHyperlinkViewViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* CoreTextHyperlinkViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CoreTextHyperlinkViewViewController.m */; };
+		53D809CD15801FBC00F4CD19 /* JSEmailCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D809CC15801FBC00F4CD19 /* JSEmailCoreTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		28D7ACF70DDB3853001CB0EB /* CoreTextHyperlinkViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextHyperlinkViewViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CoreTextHyperlinkView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextHyperlinkView_Prefix.pch; sourceTree = "<group>"; };
+		53D809CB15801FBC00F4CD19 /* JSEmailCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmailCoreTextView.h; sourceTree = "<group>"; };
+		53D809CC15801FBC00F4CD19 /* JSEmailCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmailCoreTextView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CoreTextHyperlinkView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CoreTextHyperlinkView-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +86,8 @@
 				1A7A8B3412C4C945003283E5 /* JSCoreTextView.m */,
 				1A62C43E12D5E6EA00003E1E /* JSTwitterCoreTextView.h */,
 				1A62C43F12D5E6EA00003E1E /* JSTwitterCoreTextView.m */,
+				53D809CB15801FBC00F4CD19 /* JSEmailCoreTextView.h */,
+				53D809CC15801FBC00F4CD19 /* JSEmailCoreTextView.m */,
 				1ACBF8131307576E0050711A /* JSWebViewController.h */,
 				1ACBF8141307576E0050711A /* JSWebViewController.m */,
 			);
@@ -228,6 +233,7 @@
 				1A7A8B4912C4C9C6003283E5 /* AHMarkedHyperlink.m in Sources */,
 				1A62C44012D5E6EA00003E1E /* JSTwitterCoreTextView.m in Sources */,
 				1ACBF8161307576E0050711A /* JSWebViewController.m in Sources */,
+				53D809CD15801FBC00F4CD19 /* JSEmailCoreTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
