@@ -71,6 +71,8 @@ float const yAdjustmentFactor = 1.3;
 @synthesize bgImageTopStretchCap = _bgImageTopStretchCap;
 @synthesize bgImageLeftStretchCap = _bgImageLeftStretchCap;
 
+@synthesize underlined = _underlined;
+
 + (CGFloat)measureFrameHeightForText:(NSString *)text 
 							fontName:(NSString *)fontName 
 							fontSize:(CGFloat)fontSize 
@@ -139,6 +141,8 @@ float const yAdjustmentFactor = 1.3;
     self.linkColor = [UIColor blueColor];
     self.highlightedLinkColor = [UIColor blueColor];
     self.highlightColor = [UIColor grayColor];
+	
+	self.underlined = NO;
     
     UILongPressGestureRecognizer *longPressHandler = [[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)] autorelease];
     [self addGestureRecognizer:longPressHandler];
@@ -522,14 +526,22 @@ float const yAdjustmentFactor = 1.3;
 		NSRange linkRange = [link range];
 		CFRange range = CFRangeMake(linkRange.location, linkRange.length);
 		
+		if (self.underlined)
+		{
+			// Add an underline
+			CFAttributedStringSetAttribute(maString, range, kCTUnderlineStyleAttributeName, [NSNumber numberWithInt:kCTUnderlineStyleSingle]);
+		}
+		
 		if ([self.linkColor isEqual:self.textColor] == NO)
 		{
 			CFAttributedStringSetAttribute(maString, range, kCTForegroundColorAttributeName, [self.linkColor CGColor]);
+			CFAttributedStringSetAttribute(maString, range, kCTUnderlineColorAttributeName, [self.linkColor CGColor]);
 		}
 				
 		if ([link isEqual:_touchedLink])
 		{
 			CFAttributedStringSetAttribute(maString, range, kCTForegroundColorAttributeName, [self.highlightedLinkColor CGColor]);
+			CFAttributedStringSetAttribute(maString, range, kCTUnderlineColorAttributeName, [self.highlightedLinkColor CGColor]);
 		}
 	}
 		
