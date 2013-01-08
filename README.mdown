@@ -29,7 +29,7 @@ To use CoreTextHyperlinkView in your apps:
 Screenshot
 ==========
 
-![Core Text Hyperlink View](https://s3-us-west-2.amazonaws.com/droplr.storage/files/acc_47964/sETn?AWSAccessKeyId=AKIAJSVQN3Z4K7MT5U2A&Expires=1355140611&Signature=mF7%2BInjO1jKeGRGCSncnWxm1zcE%3D&response-content-disposition=inline%3B%20filename%3DiOS%2BSimulator%2BScreen%2Bshot%2B10%2BDec%2B2012%2B10.56.01.png)
+![Core Text Hyperlink View](http://d.pr/i/sETn+)
 
 
 Licenses
