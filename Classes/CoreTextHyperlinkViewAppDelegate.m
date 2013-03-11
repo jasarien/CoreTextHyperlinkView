@@ -35,22 +35,22 @@
 
 #import "CoreTextHyperlinkViewAppDelegate.h"
 #import "CoreTextHyperlinkViewViewController.h"
+#import "JSTableViewController.h"
 
 @implementation CoreTextHyperlinkViewAppDelegate
 
 @synthesize window;
 @synthesize navController;
+@synthesize tableViewController;
+@synthesize viewController;
 
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-    // Override point for customization after application launch.
-
-    // Add the view controller's view to the window and display.
-    [self.window addSubview:navController.view];
+	
+	[self.window setRootViewController:navController];
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -109,8 +109,17 @@
 {
 	self.window = nil;
 	self.navController = nil;
+	[tableViewController release];
+	[viewController release];
     [super dealloc];
 }
 
 
+- (IBAction)example1:(id)sender {
+	[self.navController pushViewController:self.viewController animated:YES];
+}
+
+- (IBAction)example2:(id)sender {
+	[self.navController pushViewController:self.tableViewController animated:YES];
+}
 @end

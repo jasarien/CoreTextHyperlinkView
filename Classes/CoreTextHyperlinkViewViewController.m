@@ -143,7 +143,7 @@
 	[navController setModalPresentationStyle:UIModalPresentationFullScreen];
 	[navController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
 	
-	[self presentModalViewController:navController animated:YES];
+	[self presentViewController:navController animated:YES completion:NULL];
 }
 
 - (void)segmentedControlValueChanged:(id)sender

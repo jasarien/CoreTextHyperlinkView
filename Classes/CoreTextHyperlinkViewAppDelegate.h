@@ -35,7 +35,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class CoreTextHyperlinkViewViewController;
+@class CoreTextHyperlinkViewViewController, JSTableViewController;
 
 @interface CoreTextHyperlinkViewAppDelegate : NSObject <UIApplicationDelegate> {
 
@@ -45,6 +45,11 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
+@property (retain, nonatomic) IBOutlet JSTableViewController *tableViewController;
+@property (retain, nonatomic) IBOutlet CoreTextHyperlinkViewViewController *viewController;
+
+- (IBAction)example1:(id)sender;
+- (IBAction)example2:(id)sender;
 
 @end
 

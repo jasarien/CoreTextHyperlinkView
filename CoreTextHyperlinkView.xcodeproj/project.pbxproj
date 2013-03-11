@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A4DCD4016EE796A00271051 /* JSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4DCD3F16EE796A00271051 /* JSTableViewController.m */; };
+		1A4DCD4316EE798D00271051 /* JSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4DCD4216EE798D00271051 /* JSTableViewCell.m */; };
+		1A4DCD4516EE80EB00271051 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4DCD4416EE80EB00271051 /* Default-568h@2x.png */; };
 		1A62C44012D5E6EA00003E1E /* JSTwitterCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62C43F12D5E6EA00003E1E /* JSTwitterCoreTextView.m */; };
 		1A7A8B3512C4C945003283E5 /* JSCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A8B3412C4C945003283E5 /* JSCoreTextView.m */; };
 		1A7A8B4712C4C9C6003283E5 /* AHHyperlinkScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A8B4112C4C9C6003283E5 /* AHHyperlinkScanner.m */; };
@@ -27,6 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A4DCD3E16EE796A00271051 /* JSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTableViewController.h; sourceTree = "<group>"; };
+		1A4DCD3F16EE796A00271051 /* JSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTableViewController.m; sourceTree = "<group>"; };
+		1A4DCD4116EE798D00271051 /* JSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTableViewCell.h; sourceTree = "<group>"; };
+		1A4DCD4216EE798D00271051 /* JSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTableViewCell.m; sourceTree = "<group>"; };
+		1A4DCD4416EE80EB00271051 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1A62C43E12D5E6EA00003E1E /* JSTwitterCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTwitterCoreTextView.h; sourceTree = "<group>"; };
 		1A62C43F12D5E6EA00003E1E /* JSTwitterCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTwitterCoreTextView.m; sourceTree = "<group>"; };
 		1A7A8B3312C4C945003283E5 /* JSCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCoreTextView.h; sourceTree = "<group>"; };
@@ -90,6 +98,10 @@
 				53D809CC15801FBC00F4CD19 /* JSEmailCoreTextView.m */,
 				1ACBF8131307576E0050711A /* JSWebViewController.h */,
 				1ACBF8141307576E0050711A /* JSWebViewController.m */,
+				1A4DCD3E16EE796A00271051 /* JSTableViewController.h */,
+				1A4DCD3F16EE796A00271051 /* JSTableViewController.m */,
+				1A4DCD4116EE798D00271051 /* JSTableViewCell.h */,
+				1A4DCD4216EE798D00271051 /* JSTableViewCell.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -119,6 +131,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				1A4DCD4416EE80EB00271051 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -214,6 +227,7 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* CoreTextHyperlinkViewViewController.xib in Resources */,
 				1ACBF8171307576E0050711A /* JSWebViewController.xib in Resources */,
+				1A4DCD4516EE80EB00271051 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +248,8 @@
 				1A62C44012D5E6EA00003E1E /* JSTwitterCoreTextView.m in Sources */,
 				1ACBF8161307576E0050711A /* JSWebViewController.m in Sources */,
 				53D809CD15801FBC00F4CD19 /* JSEmailCoreTextView.m in Sources */,
+				1A4DCD4016EE796A00271051 /* JSTableViewController.m in Sources */,
+				1A4DCD4316EE798D00271051 /* JSTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

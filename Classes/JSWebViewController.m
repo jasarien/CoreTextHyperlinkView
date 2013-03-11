@@ -81,12 +81,6 @@
 	}
 }
 
-- (void)viewDidUnload
-{
-	self.webView = nil;
-    [super viewDidUnload];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
@@ -102,7 +96,7 @@
 
 - (void)done:(id)sender
 {
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[self.parentViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

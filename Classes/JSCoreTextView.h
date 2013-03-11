@@ -35,8 +35,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
+#import "AHMarkedHyperlink.h"
 
-@class AHMarkedHyperlink, JSCoreTextView;
+@class JSCoreTextView;
 
 @protocol JSCoreTextViewDelegate <NSObject>
 
