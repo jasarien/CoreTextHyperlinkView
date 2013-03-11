@@ -48,11 +48,11 @@
 	}
 	
 	NSMutableArray *tempLinks = [_links mutableCopy];
-	
-	NSArray *expressions = [[[NSArray alloc] initWithObjects:@"(@[a-zA-Z0-9_]+)", // screen names
-															 @"(#[a-zA-Z0-9_-]+)", // hash tags
-															 nil] autorelease];
-	//get #hashtags and @usernames
+	NSArray *expressions = [[[NSArray alloc] initWithObjects:@"(@[a-zA-Z0-9_]+/[a-zA-Z]{1}\\S*)", // lists
+                             @"(@[a-zA-Z0-9_]+)", // screen names
+                             @"(#[a-zA-Z0-9_-]+)", // hash tags
+                             nil] autorelease];
+	//get @list/full-names, #hashtags and @usernames
 	for (NSString *expression in expressions)
 	{
 		NSError *error = NULL;
@@ -62,14 +62,29 @@
 		NSArray *matches = [regex matchesInString:[self text]
 										  options:0
 											range:NSMakeRange(0, [[self text] length])];
-		
+        
 		NSString *matchedString = nil;
 		for (NSTextCheckingResult *match in matches)
 		{
+            // if this string is already part of a link, don't create a new link
+            BOOL stringAlreadyLinked = NO;
+            for (AHMarkedHyperlink *link in tempLinks) {
+                if (NSIntersectionRange(match.range, link.range).length > 0) stringAlreadyLinked = YES; 
+            }
+            if (stringAlreadyLinked) continue;
+            
 			matchedString = [[[self text] substringWithRange:[match range]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-			
-			if ([matchedString hasPrefix:@"@"]) // usernames
-			{
+            
+            if ([matchedString hasPrefix:@"@"] && [matchedString rangeOfString:@"/"].location != NSNotFound) { // lists
+                NSString *list = [matchedString substringFromIndex:1];
+                
+                AHMarkedHyperlink *hyperlink = [[[AHMarkedHyperlink alloc] initWithString:[NSString stringWithFormat:@"http://twitter.com/%@", list] 
+                                                                     withValidationStatus:AH_URL_VALID parentString:[self text] 
+                                                                                 andRange:[match range]] autorelease];
+                [tempLinks addObject:hyperlink];
+            }
+			else if ([matchedString hasPrefix:@"@"]) // usernames
+			{                
 				NSString *username = [matchedString	substringFromIndex:1];
 				
 				AHMarkedHyperlink *hyperlink = [[[AHMarkedHyperlink alloc] initWithString:[NSString stringWithFormat:@"http://twitter.com/%@", username]
