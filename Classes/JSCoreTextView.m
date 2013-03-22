@@ -123,6 +123,16 @@ float const yAdjustmentFactor = 1.3;
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        [self commonInit];
+    }
+    
+    return self;
+}
+
 - (void)commonInit {
     _textAlignment = kCTLeftTextAlignment;
     _links = nil;
