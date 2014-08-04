@@ -348,14 +348,24 @@ float const yAdjustmentFactor = 1.3;
 	location.x -= lineOrigin.x;
 	CFIndex index = CTLineGetStringIndexForPosition(line, location);
 	
-	for (AHMarkedHyperlink *link in _links)
-	{
-		if (((index >= [link range].location) && (index <= ([link range].length + [link range].location))))
-		{
-			_touchedLink = link;
-			[self setNeedsDisplay];
-		}
-	}
+    CGFloat xOffset = CTLineGetOffsetForStringIndex(line, index, NULL);
+    
+    if (fabs(location.x - xOffset) < 10)
+    {
+        for (AHMarkedHyperlink *link in _links)
+        {
+            if (((index >= [link range].location) && (index <= ([link range].length + [link range].location))))
+            {
+                _touchedLink = link;
+                [self setNeedsDisplay];
+            }
+        }
+    }
+    
+    if (!_touchedLink)
+    {
+        [super touchesBegan:touches withEvent:event];
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -422,6 +432,8 @@ float const yAdjustmentFactor = 1.3;
 	}
 	
 	_touchedLink = nil;
+    
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
 	[self setNeedsDisplay];
 }
 
